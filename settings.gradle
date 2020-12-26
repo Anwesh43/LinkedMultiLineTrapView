@@ -1,0 +1,3 @@
+include ':multilinetrapview'
+include ':app'
+rootProject.name = "LinkedMultiLineTrapView"
