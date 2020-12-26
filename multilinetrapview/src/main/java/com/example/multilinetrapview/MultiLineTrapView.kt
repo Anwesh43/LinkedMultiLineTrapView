@@ -221,4 +221,13 @@ class MultiLineTrapView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity : Activity) : MultiLineTrapView {
+            val view : MultiLineTrapView = MultiLineTrapView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
