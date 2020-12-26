@@ -38,7 +38,7 @@ fun Canvas.drawMultiLineTrap(scale : Float, w : Float, h : Float, paint : Paint)
     val sf3 : Float = sf.divideScale(2, parts)
     val size : Float = Math.min(w, h) / sizeFactor
     val trapSize : Float = Math.min(w, h) / trapFactor
-    val gap : Float = (2 * size) / (lines - 1)
+    val gap : Float = (2 * (size - trapSize)) / (lines - 1)
     save()
     translate(w / 2, h)
     for (j in 0..1) {
@@ -49,8 +49,8 @@ fun Canvas.drawMultiLineTrap(scale : Float, w : Float, h : Float, paint : Paint)
         restore()
     }
     save()
-    translate(-size, -trapSize)
-    drawLine(0f, 0f, 2 * size * sf2, 0f, paint)
+    translate(-size + trapSize, -trapSize)
+    drawLine(0f, 0f, 2 * (size - trapSize) * sf2, 0f, paint)
     for (j in 0..(lines - 1)) {
         save()
         translate(gap * j, 0f)
