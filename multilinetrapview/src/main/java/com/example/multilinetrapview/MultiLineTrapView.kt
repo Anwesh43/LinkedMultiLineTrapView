@@ -196,4 +196,27 @@ class MultiLineTrapView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : MultiLineTrapView) {
+
+        private val mlt : MultiLineTrap = MultiLineTrap(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val animator : Animator = Animator(view)
+
+        fun render(canvas : Canvas, paint : Paint) {
+            canvas.drawColor(backColor)
+            mlt.draw(canvas, paint)
+            animator.animate {
+                mlt.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            mlt.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
